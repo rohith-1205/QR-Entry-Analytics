@@ -1,0 +1,367 @@
+/* ===============================
+   FULL SCREEN BASE
+   =============================== */
+.dashboard-container {
+  height: 100vh;
+  width: 100vw;
+
+  background:
+    radial-gradient(
+      circle at top center,
+      rgba(155, 28, 47, 0.08),
+      transparent 55%
+    ),
+    linear-gradient(
+      180deg,
+      #fbf3f4 0%,
+      #f6eef0 45%,
+      #f1e8ea 100%
+    );
+
+  color: #1f2937;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 14px 32px;
+  box-sizing: border-box;
+  overflow: hidden; /* ✅ critical for confetti */
+}
+
+/* ===============================
+   LOGOS
+   =============================== */
+.logo-row {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 26px;
+  align-items: center;
+  padding: 6px 0 4px;
+}
+
+.logo-row img {
+  height: 56px;
+  object-fit: contain;
+}
+
+.logo-row img.logo-small {
+  height: 48px;
+}
+
+/* ===============================
+   TITLE
+   =============================== */
+.dashboard-title {
+  font-size: 46px;
+  font-weight: 900;
+  letter-spacing: 1.6px;
+  text-align: center;
+  margin: 14px 0 10px;
+  color: #9b1c2f;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.6);
+}
+
+/* ===============================
+   TOTAL FOOTFALL
+   =============================== */
+.total-footfall {
+  font-size: 22px;
+  font-weight: 800;
+  color: #5a1a24;
+  margin-bottom: 14px;
+  letter-spacing: 0.8px;
+}
+
+.total-footfall-value {
+  font-size: 36px;
+  font-weight: 900;
+  color: #c73b55;
+  margin-left: 12px;
+}
+
+/* ===============================
+   ACCENT DIVIDER
+   =============================== */
+.accent-divider {
+  width: 200px;
+  height: 4px;
+  border-radius: 4px;
+  margin-bottom: 18px;
+  background: linear-gradient(
+    90deg,
+    #9b1c2f,
+    #c73b55,
+    #9b1c2f
+  );
+}
+
+/* ===============================
+   COUNTER GRID (NO SCROLL)
+   =============================== */
+.dashboard-grid {
+  width: 100%;
+  max-width: 1450x;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 22px;
+}
+
+/* ===============================
+   COUNTER CARD
+   =============================== */
+.counter-card {
+  background: linear-gradient(160deg, #ffffff, #f7eef1);
+  border-radius: 20px;
+  padding: 22px 18px;
+  text-align: center;
+
+  box-shadow:
+    0 16px 34px rgba(155, 28, 47, 0.16),
+    inset 0 1px 0 rgba(255, 255, 255, 0.7);
+
+  position: relative;
+  overflow: hidden;
+
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.counter-card.highlight {
+  box-shadow:
+    0 0 0 3px rgba(155, 28, 47, 0.25),
+    0 20px 44px rgba(155, 28, 47, 0.35);
+  transform: translateY(-5px);
+}
+
+.counter-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 5px;
+  width: 100%;
+  background: linear-gradient(90deg, #9b1c2f, #c73b55);
+}
+
+.counter-label {
+  font-size: 17px;
+  font-weight: 600;
+  color: #374151;
+  margin-bottom: 10px;
+}
+
+.counter-value {
+  font-size: 52px;
+  font-weight: 900;
+  color: #9b1c2f;
+}
+
+/* ===============================
+   FOOTER
+   =============================== */
+.dashboard-footer {
+  margin-top: auto;
+  padding-top: 10px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #7a4b52;
+  letter-spacing: 0.6px;
+  opacity: 0.85;
+}
+
+/* ===============================
+   RESPONSIVE
+   =============================== */
+@media (max-width: 1200px) {
+  .dashboard-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 900px) {
+  .dashboard-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ===============================
+   🎉 PREMIUM CONFETTI CELEBRATION
+   =============================== */
+.confetti-overlay {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+  overflow: hidden;
+}
+
+/* Confetti particles */
+.confetti-piece {
+  position: absolute;
+  top: -15%;
+  width: 10px;
+  height: 18px;
+  border-radius: 2px;
+  opacity: 0.85;
+
+  animation-name: confetti-float;
+  animation-timing-function: cubic-bezier(0.2, 0.6, 0.4, 1);
+  animation-fill-mode: forwards;
+}
+
+/* Spread across screen */
+.confetti-piece:nth-child(1n)  { left: 5%;  animation-duration: 12s; }
+.confetti-piece:nth-child(2n)  { left: 15%; animation-duration: 14s; }
+.confetti-piece:nth-child(3n)  { left: 25%; animation-duration: 13s; }
+.confetti-piece:nth-child(4n)  { left: 35%; animation-duration: 15s; }
+.confetti-piece:nth-child(5n)  { left: 45%; animation-duration: 12s; }
+.confetti-piece:nth-child(6n)  { left: 55%; animation-duration: 14s; }
+.confetti-piece:nth-child(7n)  { left: 65%; animation-duration: 13s; }
+.confetti-piece:nth-child(8n)  { left: 75%; animation-duration: 15s; }
+.confetti-piece:nth-child(9n)  { left: 85%; animation-duration: 12s; }
+.confetti-piece:nth-child(10n) { left: 95%; animation-duration: 14s; }
+
+/* Color palette (festive but professional) */
+.confetti-piece:nth-child(3n) { background: #9b1c2f; }
+.confetti-piece:nth-child(4n) { background: #c73b55; }
+.confetti-piece:nth-child(5n) { background: #f59e0b; }
+.confetti-piece:nth-child(6n) { background: #16a34a; }
+.confetti-piece:nth-child(7n) { background: #2563eb; }
+
+/* Gentle floating animation */
+@keyframes confetti-float {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 0.9;
+  }
+
+  40% {
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateY(130vh) rotate(1080deg);
+    opacity: 0;
+  }
+}
+/* ===============================
+   🌟 MILESTONE TEXT OVERLAY
+   =============================== */
+.milestone-overlay {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 64px;
+  font-weight: 900;
+  letter-spacing: 2px;
+  text-align: center;
+
+  color: #9b1c2f;
+  text-shadow:
+    0 0 20px rgba(199, 59, 85, 0.8),
+    0 0 40px rgba(199, 59, 85, 0.6);
+
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(2px);
+
+  z-index: 9998;
+  pointer-events: none;
+
+  animation: milestone-fade 12s ease-out forwards;
+}
+
+/* Fade out milestone text */
+@keyframes milestone-fade {
+  0% {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  10% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  85% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.05);
+  }
+}
+
+/* ===============================
+   ✨ GLOW EFFECT ON TOTAL FOOTFALL
+   =============================== */
+.total-footfall-value.glow {
+  animation: glow-pulse 2s ease-in-out infinite;
+}
+
+@keyframes glow-pulse {
+  0% {
+    text-shadow:
+      0 0 10px rgba(199, 59, 85, 0.6),
+      0 0 20px rgba(199, 59, 85, 0.4);
+  }
+  50% {
+    text-shadow:
+      0 0 25px rgba(199, 59, 85, 1),
+      0 0 50px rgba(199, 59, 85, 0.8);
+  }
+  100% {
+    text-shadow:
+      0 0 10px rgba(199, 59, 85, 0.6),
+      0 0 20px rgba(199, 59, 85, 0.4);
+  }
+}
+/* ===============================
+   🎓 DASHBOARD GREETING TEXT
+   =============================== */
+.dashboard-greeting {
+  margin-top: 14px;
+  font-size: 30px;
+  font-weight: 700;              /* ✅ bold */
+  color: #2f2f2f;                /* ✅ blackish grey */
+  text-align: center;
+  letter-spacing: 0.4px;
+}
+/* ===============================
+   🟡 GOLD OVERLINE FOR AMRITA CARDS
+   =============================== */
+
+/* Amrita Students (1st card) */
+.dashboard-grid .counter-card:nth-child(1)::before {
+  background: linear-gradient(
+    90deg,
+    #d4af37,   /* gold */
+    #f5d76e,
+    #d4af37
+  );
+}
+
+/* Amrita Faculty (2nd card) */
+.dashboard-grid .counter-card:nth-child(2)::before {
+  background: linear-gradient(
+    90deg,
+    #d4af37,   /* gold */
+    #f5d76e,
+    #d4af37
+  );
+}
+/* ===============================
+   🟡 DEEP GOLD OVERLINE (AMRITA + CEO)
+   =============================== */
+
+/* Common gold overline style */
+.dashboard-grid .counter-card:nth-child(1)::before,
+.dashboard-grid .counter-card:nth-child(2)::before,
+.dashboard-grid .counter-card:nth-child(7)::before {
+  height: 8px; /* thicker than others */
+  background: linear-gradient(
+    90deg,
+    #b08d00,   /* deep gold */
+    #f2c94c,   /* highlight */
+    #b08d00
+  );
+}
