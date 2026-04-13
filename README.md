@@ -75,3 +75,5 @@ A high-performance, real-time event entry management and analytics dashboard bui
 ## 📄 License
 
 This project is licensed under the MIT License - feel free to build upon it for your own event requirement!
+
+- ROHITH S
